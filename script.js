@@ -15,25 +15,25 @@ const slideImage = () => {
 
 
     // });
-    imagesArray.forEach((image, index) => {
-        for(let i=1; i<=noOfImages; i++){
-            image.style.left = `${(counter - i)*100}%`;
-        }
-    })
-
-
-    // imagesArray.forEach( (image, index) => {
-    //     let currentPosition = 0;
-    //     let intervalId = setInterval(() => {
-    //         currentPosition += 0.05;
-    //         console.log(currentPosition);
-    //         if(currentPosition >= 100){
-    //             clearInterval(intervalId);
-    //         }else{
-    //             image.style.left = `${(index - counter - 1)*100 - currentPosition}%`;
-    //         }
-    //     }, 0.001)
+    // imagesArray.forEach((image, index) => {
+    //     for(let i=1; i<=noOfImages; i++){
+    //         image.style.left = `${(counter - i)*100}%`;
+    //     }
     // })
+
+
+    imagesArray.forEach( (image, index) => {
+        let currentPosition = 0;
+        let intervalId = setInterval(() => {
+            currentPosition += 0.05;
+            console.log(currentPosition);
+            if(currentPosition >= 100){
+                clearInterval(intervalId);
+            }else{
+                image.style.left = `${(index - counter)*100 - currentPosition}%`;
+            }
+        }, 0.001)
+    })
 }
 
 
@@ -56,7 +56,8 @@ const goNxt = () => {
 }
 
 function currentSlide(n){
-    imagesArray.forEach(image => image.style.transform = `translateX(-${n* 100}%)`);
+    //if(n)
+    imagesArray.forEach(image => image.style.transform = `translateX(-${(n)* 100}%)`);
 }
 
 //Automatic slide show
