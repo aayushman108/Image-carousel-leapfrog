@@ -9,34 +9,24 @@ let counter = 0;
 const leftBtn = document.getElementById("arrow-left");
 const rightBtn = document.getElementById("arrow-right");
 
+
 const slideImage = () => {
-    // imagesArray.forEach( (image, index) => {
-    //     //image.style.transform = `translateX(-${counter* 100}%)`;
-
-
-    // });
-    // imagesArray.forEach((image, index) => {
-    //     for(let i=1; i<=noOfImages; i++){
-    //         image.style.left = `${(counter - i)*100}%`;
-    //     }
-    // })
-
-
     imagesArray.forEach( (image, index) => {
-        let currentPosition = 0;
-        let intervalId = setInterval(() => {
-            currentPosition += 0.05;
-            console.log(currentPosition);
-            if(currentPosition >= 100){
-                clearInterval(intervalId);
-            }else{
-                image.style.left = `${(index - counter)*100 - currentPosition}%`;
-            }
-        }, 0.001)
-    })
+        image.style.transform = `translateX(-${counter* 100}%)`;
+    });
+    // imagesArray.forEach( (image, index) => {
+    //     let currentPosition = 0;
+    //     let intervalId = setInterval(() => {
+    //         currentPosition += 0.05;
+    //         console.log(currentPosition);
+    //         if(currentPosition >= 100){
+    //             clearInterval(intervalId);
+    //         }else{
+    //             image.style.left = `${(index - counter)*100 - currentPosition}%`;
+    //         }
+    //     }, 1000/60)
+    // })
 }
-
-
 
 const goPrev = () => {
     if(counter > 0){
@@ -54,18 +44,16 @@ const goNxt = () => {
     }
     slideImage()
 }
+leftBtn.addEventListener("click", goPrev);
+rightBtn.addEventListener("click", goNxt);
 
-function currentSlide(n){
-    //if(n)
+function directSlide(n){
     imagesArray.forEach(image => image.style.transform = `translateX(-${(n)* 100}%)`);
 }
 
 //Automatic slide show
-// const intervalId = setInterval(goNxt, 2000);
-// document.body.addEventListener('click', () => clearInterval(intervalId));
-
-leftBtn.addEventListener("click", goPrev);
-rightBtn.addEventListener("click", goNxt);
+const intervalId = setInterval(goNxt, 3000);
+document.body.addEventListener('click', () => clearInterval(intervalId));
 
 imagesArray.forEach((image, index) => image.style.left = `${index* 100}%`);
 
