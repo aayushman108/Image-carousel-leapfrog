@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.carousel-container{
+    width: 60%;
+    height: 500px;
+    margin: 50px auto;
+    position: relative;
+    overflow: hidden;
+    /* border: 4px solid blue; */
+    border-radius: 10px;
+    height: calc(9/22 * 100vw);
+}
+
+.carousel-image-wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-image-item{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+button{
+    cursor: pointer;
+}
+#arrow-left{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translate(0, -50%);
+    background-color: transparent;
+    border: none;
+}
+#arrow-right{
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translate(0, -50%);
+    background-color: transparent;
+    border: none;
+}
+
+.bi{
+    font-size: 40px;
+    color: red;
+}
+.bi:hover{
+    color: rgb(199, 90, 90);
+}
+
+.dots-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: red;
+    cursor: pointer;
+}
+.dot:hover{
+    background-color: rgb(199, 90, 90);
+}
+
+@media screen and (max-width: 992px) {
+    .carousel-container{
+        width: 70%;   
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .carousel-container{
+        width: 90%;   
+    }
+}
