@@ -1,4 +1,5 @@
 const imageItems = document.getElementsByClassName("carousel-image-item");
+const container = document.getElementsByClassName("carousel-container");
 const imagesArray = Array.from(imageItems);
 const noOfImages = imageItems.length;
 console.log(noOfImages);
@@ -9,6 +10,9 @@ let counter = 0;
 const leftBtn = document.getElementById("arrow-left");
 const rightBtn = document.getElementById("arrow-right");
 
+function directSlide(n){
+    imagesArray.forEach(image => image.style.transform = `translateX(-${(n)* 100}%)`);
+}
 
 const slideImage = () => {
     imagesArray.forEach( (image, index) => {
@@ -36,6 +40,7 @@ const goPrev = () => {
     }
     slideImage()
 }
+
 const goNxt = () => {
     if(counter < noOfImages - 1){
         counter++;
@@ -44,12 +49,22 @@ const goNxt = () => {
     }
     slideImage()
 }
+
+const dotsContainer = document.createElement('div');
+    dotsContainer.className = 'dots-container';
+
+    for (let i = 0; i < noOfImages; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      dot.setAttribute('onclick', 'directSlide(' + i + ')');
+      dotsContainer.appendChild(dot);
+}
+
+document.body.appendChild(dotsContainer);
+
+
 leftBtn.addEventListener("click", goPrev);
 rightBtn.addEventListener("click", goNxt);
-
-function directSlide(n){
-    imagesArray.forEach(image => image.style.transform = `translateX(-${(n)* 100}%)`);
-}
 
 //Automatic slide show
 const intervalId = setInterval(goNxt, 3000);
